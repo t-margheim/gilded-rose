@@ -36,6 +36,10 @@ func UpdateQuality(items ...*Item) {
 			agedBrieTick(item)
 			return
 		}
+		if item.name == "Sulfuras, Hand of Ragnaros" {
+			sulfurasTick(item)
+			return
+		}
 		if item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert" {
 			if item.quality > 0 {
 				if item.name != "Sulfuras, Hand of Ragnaros" {
@@ -106,4 +110,8 @@ func agedBrieTick(item *Item) {
 	if item.quality > 50 {
 		item.quality = 50
 	}
+}
+
+func sulfurasTick(item *Item) {
+
 }
