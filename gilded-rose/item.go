@@ -1,6 +1,8 @@
 package gildedrose
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // Item describes an item sold by the Gilded Rose Inn
 type Item struct {
@@ -26,6 +28,10 @@ func New(name string, days, quality int) *Item {
 // UpdateQuality ages the item by a day, and updates the quality of the item
 func UpdateQuality(items ...*Item) {
 	for _, item := range items {
+		if item.name == "normal" {
+			normalTick(item)
+			return
+		}
 		if item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert" {
 			if item.quality > 0 {
 				if item.name != "Sulfuras, Hand of Ragnaros" {
@@ -71,5 +77,16 @@ func UpdateQuality(items ...*Item) {
 				}
 			}
 		}
+	}
+}
+
+func normalTick(item *Item) {
+	item.quality--
+	item.days--
+	if item.days < 0 {
+		item.quality--
+	}
+	if item.quality < 0 {
+		item.quality = 0
 	}
 }

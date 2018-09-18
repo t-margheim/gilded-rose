@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	gildedrose "github.com/robphoenix/gilded-rose/gilded-rose"
+	gildedrose "github.com/t-margheim/gilded-rose/gilded-rose"
 )
 
 var things = []struct {
