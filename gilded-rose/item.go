@@ -32,6 +32,10 @@ func UpdateQuality(items ...*Item) {
 			normalTick(item)
 			return
 		}
+		if item.name == "Aged Brie" {
+			agedBrieTick(item)
+			return
+		}
 		if item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert" {
 			if item.quality > 0 {
 				if item.name != "Sulfuras, Hand of Ragnaros" {
@@ -88,5 +92,18 @@ func normalTick(item *Item) {
 	}
 	if item.quality < 0 {
 		item.quality = 0
+	}
+}
+
+func agedBrieTick(item *Item) {
+	item.quality++
+	item.days--
+
+	if item.days < 0 {
+		item.quality++
+	}
+
+	if item.quality > 50 {
+		item.quality = 50
 	}
 }
